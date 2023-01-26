@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from colorama import Fore as colorize
 
-from user_agents import random_user_agent
+from search_engines.user_agents import random_user_agent
 
 
 def google_enumerator(domain: str, silent: bool):
@@ -18,7 +18,7 @@ def google_enumerator(domain: str, silent: bool):
         engine_url = f'{BASE_ENGINE_URL}?q={query}'
         response = requests.get(url=engine_url, headers=request_headers)
         if response.status_code != 200:
-            if silent:
+            if silent is not True:
                 print(colorize.RED+'[-]', colorize.LIGHTRED_EX+engine_url,
                       '\tStatus code:', response.status_code)
             break
@@ -40,7 +40,7 @@ def google_enumerator(domain: str, silent: bool):
     while True:
         engine_url = f'{BASE_ENGINE_URL}?q={query}&start={page_number}'
         if response.status_code != 200:
-            if silent:
+            if silent is not True:
                 print(colorize.RED+'[-]', colorize.LIGHTRED_EX+engine_url,
                       '\tStatus code:', response.status_code)
             break
