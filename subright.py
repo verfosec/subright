@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """🆂🆄🅱🆁🅸🅶🅷🆃
-version: v0.0.0
+version: v0.1.0
 author: Verfosec
 contact me: verfosec@gmail.com
 """
@@ -9,6 +9,8 @@ contact me: verfosec@gmail.com
 import argparse
 import sys
 from colorama import Fore as colorize
+
+import search_engines
 
 
 def arguments_parser():
@@ -71,16 +73,14 @@ def main():
     subdomains = []
 
     if domain:
-        # Subdomain enumeration
-        pass
+        subdomains += search_engines.google_enumerator(domain, silent)
     else:
         domains = []
         with open(input_file, 'r') as file:
             domains = file.read().splitlines()
 
         for domain in domains:
-            # Subdomain enumeration
-            pass
+            subdomains += search_engines.google_enumerator(domain, silent)
 
     if output:
         with open(output, 'w') as output_file:
