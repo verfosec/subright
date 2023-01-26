@@ -74,6 +74,7 @@ def main():
 
     if domain:
         subdomains += search_engines.google_enumerator(domain, silent)
+        subdomains += search_engines.crtsh_enumerator(domain, silent)
     else:
         domains = []
         with open(input_file, 'r') as file:
@@ -81,6 +82,7 @@ def main():
 
         for domain in domains:
             subdomains += search_engines.google_enumerator(domain, silent)
+            subdomains += search_engines.crtsh_enumerator(domain, silent)
 
     if output:
         with open(output, 'w') as output_file:
