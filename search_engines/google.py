@@ -61,6 +61,3 @@ def google_enumerator(domain: str, silent: bool):
 
     # Convert to set to remove repeated values then convert it to list
     return list(set(subdomains))
-
-
-print(google_enumerator('sony.com', True))
